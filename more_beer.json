@@ -1,0 +1,127 @@
+[
+  {
+  	"name": "IPA Sommerhopfen",
+  	"style": "IPA",
+  	"abv": 6.2,
+  	"ingredients": {
+    	"malts": [
+      	{ "name": "Pilsner Malz", "amountKg": 5 },
+      	{ "name": "Carahell", "amountKg": 0.5 }
+    	],
+    	"hops": [
+      	{ "name": "Citra", "amountG": 50 },
+      	{ "name": "Mosaic", "amountG": 30 }
+    	],
+    	"yeast": "US-05"
+  	},
+  	"brewSteps": [
+    	"Maischen bei 67C",
+    	"60 Minuten kochen"
+  	]
+  },
+  {
+    "name": "Alpine Pale Ale",
+    "style": "Pale Ale",
+    "abv": 5.4,
+    "recipe": {
+      "batchSize": "20L",
+      "malts": [
+        "4.5 kg Pale Ale Malt",
+        "0.3 kg CaraMunich"
+      ],
+      "hops": [
+        "20 g Cascade (60 min)",
+        "25 g Citra (15 min)",
+        "30 g Cascade (Dry Hop)"
+      ],
+      "yeast": "US-05",
+      "ibu": 38,
+      "boilTime": "60 min",
+      "fermentation": "18-20°C for 10 days"
+    }
+  },
+  {
+    "name": "Midnight Stout",
+    "style": "Stout",
+    "abv": 6.8,
+    "recipe": {
+      "batchSize": "20L",
+      "malts": [
+        "4.0 kg Maris Otter",
+        "0.5 kg Roasted Barley",
+        "0.3 kg Chocolate Malt",
+        "0.2 kg Flaked Oats"
+      ],
+      "hops": [
+        "35 g East Kent Goldings (60 min)"
+      ],
+      "yeast": "SafAle S-04",
+      "ibu": 42,
+      "boilTime": "60 min",
+      "fermentation": "19°C for 12 days"
+    }
+  },
+  {
+    "name": "Golden Wheat",
+    "style": "Hefeweizen",
+    "abv": 5.1,
+    "recipe": {
+      "batchSize": "20L",
+      "malts": [
+        "2.5 kg Wheat Malt",
+        "2.0 kg Pilsner Malt"
+      ],
+      "hops": [
+        "15 g Hallertau Mittelfruh (60 min)",
+        "10 g Tettnang (15 min)"
+      ],
+      "yeast": "WB-06",
+      "ibu": 18,
+      "boilTime": "60 min",
+      "fermentation": "20-22°C for 8 days"
+    }
+  },
+  {
+    "name": "Hop Storm IPA",
+    "style": "IPA",
+    "abv": 6.9,
+    "recipe": {
+      "batchSize": "20L",
+      "malts": [
+        "5.2 kg Pale Malt",
+        "0.4 kg Vienna Malt"
+      ],
+      "hops": [
+        "25 g Magnum (60 min)",
+        "30 g Mosaic (10 min)",
+        "40 g Citra (Whirlpool)",
+        "50 g Mosaic (Dry Hop)"
+      ],
+      "yeast": "US-05",
+      "ibu": 62,
+      "boilTime": "60 min",
+      "fermentation": "18°C for 10 days"
+    }
+  },
+  {
+    "name": "Copper Trail Amber",
+    "style": "Amber Ale",
+    "abv": 5.8,
+    "recipe": {
+      "batchSize": "20L",
+      "malts": [
+        "4.3 kg Pale Malt",
+        "0.5 kg Crystal Malt",
+        "0.2 kg Munich Malt"
+      ],
+      "hops": [
+        "20 g Northern Brewer (60 min)",
+        "20 g Cascade (15 min)"
+      ],
+      "yeast": "SafAle S-04",
+      "ibu": 30,
+      "boilTime": "60 min",
+      "fermentation": "19°C for 10 days"
+    }
+  }
+]
