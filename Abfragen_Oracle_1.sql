@@ -5,6 +5,15 @@ FROM user_tables;
 SELECT *
 FROM beer_v01;
 
+/* Daten einfügen */
+INSERT INTO beer_v01
+VALUES (7, 
+ '{
+    name: "Double CC IPA",
+    style: "IPA",
+    abv: 6.8
+  }');
+
 /* Daten lesen: style = IPA */
 SELECT JSON_VALUE(data, '$.name')
 FROM beer_v01
@@ -25,10 +34,10 @@ FROM beer_v01 b
 WHERE b.data.style LIKE '%Ale%';
 
 /* Daten lesen: Schnitt und Maximum von abv der IPA  */
-SELECT JSON_VALUE(data, '$.name‘) …
-FROM ..
-WHERE ..
-
-SELECT b.data.name..
+SELECT 
+    b.data.style, 
+    avg(b.data.abv) avg_abv, 
+    max(b.data.abv) max_abv
 FROM beer_v01 b
-WHERE …
+WHERE b.data.style = 'IPA'
+GROUP BY b.data.style;

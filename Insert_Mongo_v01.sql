@@ -1,0 +1,37 @@
+-- Daten für V01
+use brewdbV01
+
+db.beers.drop()
+
+db.beers.insertMany([
+  {
+  	name: "IPA Sommerhopfen",
+  	style: "IPA",
+  	abv: 6.2
+  },
+  {
+    name: "Alpine Pale Ale",
+    style: "Pale Ale",
+    abv: 5.4
+  },
+  {
+    name: "Midnight Stout",
+    style: "Stout",
+    abv: 6.8
+  },
+  {
+    name: "Golden Wheat",
+    style: "Hefeweizen",
+    abv: 5.1
+  },
+  {
+    name: "Hop Storm IPA",
+    style: "IPA",
+    abv: 6.9
+  },
+  {
+    name: "Copper Trail Amber",
+    style: "Amber Ale",
+    abv: 5.8
+  }
+])

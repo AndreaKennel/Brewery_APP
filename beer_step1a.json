@@ -30,3 +30,9 @@
     abv: 5.8
   }
 ]
+
+  {
+    name: "Double CC IPA",
+    style: "IPA",
+    abv: 6.8
+  }

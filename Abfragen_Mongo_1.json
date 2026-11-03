@@ -5,6 +5,13 @@ show collections
 
 db.beers.find()
 
+/* Daten einfügen */
+db.beers.insertOne(  {
+    name: "Double CC IPA",
+    style: "IPA",
+    abv: 6.8
+  })
+
 /* Daten lesen: style = IPA */
 db.beers.find({style: 'IPA'}, {name: 1, _id: 0})
 
@@ -35,7 +42,7 @@ db.beers.aggregate([
   { $match: {style: "IPA" }
   },
   { $group: {
-      _id: "$style“,
+      _id: "$style",
       avg_abv: { $avg: "$abv" },
       max_abv: { $max: "$abv" }
     }
