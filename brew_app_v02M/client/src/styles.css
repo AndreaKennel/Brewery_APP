@@ -22,8 +22,8 @@ button, input { font: inherit; }
   min-height: 268px;
   padding: 46px 54px;
   border-radius: 22px;
-  color: #f8f6e8;
-  background: #243d32;
+  color: #bcf0c9;
+  background: #1f9309;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,10 +41,10 @@ button, input { font: inherit; }
   top: -110px;
 }
 .hero-copy { max-width: 610px; z-index: 1; }
-.eyebrow { margin: 0 0 12px; color: #a7b895; font-size: 11px; font-weight: 700; letter-spacing: .16em; }
+.eyebrow { margin: 0 0 12px; color: #bcf0c9; font-size: 11px; font-weight: 700; letter-spacing: .16em; }
 h1, h2 { font-family: Georgia, "Times New Roman", serif; }
 h1 { max-width: 590px; margin: 0; font-size: clamp(36px, 5vw, 56px); line-height: 1.08; letter-spacing: -.025em; }
-.hero-description { margin: 17px 0 0; color: #d3d9cd; font-size: 15px; }
+.hero-description { margin: 17px 0 0; color: #bcf0c9; font-size: 15px; }
 .hero-mark {
   width: 128px;
   height: 128px;
@@ -52,7 +52,7 @@ h1 { max-width: 590px; margin: 0; font-size: clamp(36px, 5vw, 56px); line-height
   place-items: center;
   border: 1px solid rgb(255 255 255 / 35%);
   border-radius: 50%;
-  color: #e2bd69;
+  color: #ffec37;
   font: 700 78px Georgia, "Times New Roman", serif;
   z-index: 1;
 }

@@ -1,0 +1,42 @@
+/* Daten lesen: alle Daten */
+show dbs
+use brewdbV01
+show collections
+
+db.beers.find()
+
+/* Daten lesen: style = IPA */
+db.beers.find({style: 'IPA'}, {name: 1, _id: 0})
+
+db.beers.aggregate([
+  { $match: {style : 'IPA' }
+  },
+  { $project: {
+      _id: 0,
+      name: 1    }
+  }])
+
+/* Daten lesen: style beinhaltet Ale */
+db.beers.find(
+  { style: { $regex: "Ale" } },
+  {name: 1, style: 1, _id: 0}
+)
+
+db.beers.aggregate([
+  { $match: { style: { $regex: "Ale" } }
+  },
+  { $project: {
+      _id: 0,
+      name: 1,
+      style: 1 }])
+
+/* Daten lesen: Schnitt und Maximum von abv der IPA  */
+db.beers.aggregate([
+  { $match: {style: "IPA" }
+  },
+  { $group: {
+      _id: "$style“,
+      avg_abv: { $avg: "$abv" },
+      max_abv: { $max: "$abv" }
+    }
+  }])

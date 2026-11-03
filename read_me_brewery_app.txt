@@ -24,5 +24,8 @@ V01: Eine erste Version nutzt einfache Dokumente.
 V01 mit Mongo klappt: http://localhost:5173/
 Nun sind die Daten in Oracle in den User BREW_APP geladen werden.
 V01O wird nun erstellt und mit Copilot so umgebaut, dass die Daten aus Oracle gelesen werden.
+Klappt.
 
+2.11.26
+V02: für Mongo erstellt. In Mongo wurde dafür eine neuen DB eingerichtet, die erweiterten Daten geladen. Für die Applikation wurde V01M zu V02M dupliziert und das .env angepasst.
 

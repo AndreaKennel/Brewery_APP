@@ -101,13 +101,13 @@ function App() {
     <main className="page-shell">
       <header className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">BREWERY · BIERBIBLIOTHEK</p>
-          <h1>Finde dein nächstes Lieblingsbier.</h1>
+          <p className="eyebrow">Monsterbräu</p>
+          <h1>BRAUEREI APP</h1>
           <p className="hero-description">
-            Durchsuche die Sammlung nach Name, Bierstil und Alkoholgehalt.
+            Durchsuche die Sammlung M2 nach Name, Bierstil und Alkoholgehalt.
           </p>
         </div>
-        <div className="hero-mark" aria-hidden="true">B</div>
+        <div className="hero-mark" aria-hidden="true">M</div>
       </header>
 
       <section className="content" aria-label="Bierübersicht">
