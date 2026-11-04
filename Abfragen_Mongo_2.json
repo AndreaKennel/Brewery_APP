@@ -1,0 +1,138 @@
+/* Daten lesen: alle Daten */
+use brewdbV02
+show collections
+
+db.beers.find()
+
+/* Daten lesen: welche Biere verweden Cascade als Hopfen */
+db.beers.find(
+  {
+    "recipe.hops.name": "Cascade"
+  },
+  {
+    name: 1,
+    style: 1,
+    _id: 0
+  }
+)
+
+/* Daten lesen: Gesamte Malzmenge je Bier */
+db.beers.aggregate([
+  {
+    $project: {
+      name: 1,
+      totalMaltKg: {
+        $sum: "$recipe.malts.amountKg"
+      }
+    }
+  }
+])
+
+
+/* Daten lesen: Anzahl Malzsorten je Bier */
+db.beers.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      anzahlMalze: {
+        $size: "$recipe.malts"
+      }
+    }
+  }
+])
+
+db.beers.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      unterschiedlicheMalze: {
+        $size: {
+          $setUnion: [
+            "$recipe.malts.name"
+          ]
+        }
+      }
+    }
+  }
+])
+
+db.beers.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      unterschiedlicheMalze: {
+        $size: {
+          $setUnion: [
+            "$recipe.malts.name"
+          ]
+        }
+      },
+      unterschiedlicheHopfen: {
+        $size: {
+          $setUnion: [
+            "$recipe.hops.name"
+          ]
+        }
+      }
+    }
+  }
+])
+
+/* Daten lesen: Wie viel Malz benötige ich für alle Biere?  */
+db.beers.aggregate([
+  {
+    $unwind: "$recipe.malts"
+  },
+  {
+    $group: {
+      _id: "$recipe.malts.name",
+      gesamtMengeKg: {
+        $sum: "$recipe.malts.amountKg"
+      }
+    }
+  },
+  {
+    $sort: {
+      gesamtMengeKg: -1
+    }
+  }
+])
+
+/* Daten lesen: Wie viel Malz benötige ich für alle IPA?  */
+db.beers.aggregate([
+  {
+    $match: {style : 'IPA' }
+  },
+  {
+    $unwind: "$recipe.malts"
+  },
+  {
+    $group: {
+      _id: "$recipe.malts.name",
+      gesamtMengeKg: {
+        $sum: "$recipe.malts.amountKg"
+      }
+    }
+  },
+  {
+    $sort: {
+      gesamtMengeKg: -1
+    }
+  }
+])
+
+db.beers.aggregate([
+  {
+    $match: {style : 'IPA' }
+  },
+  { $project : {_id: 0, name: 1, malts: "$recipe.malts"}}])
+
+db.beers.aggregate([
+  {
+    $match: {style : 'IPA' }
+  },
+  { $project : {_id: 0, name: 1, malts: "$recipe.malts"}},
+  { $unwind: "$malts"}])
