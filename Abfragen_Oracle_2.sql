@@ -154,58 +154,23 @@ FROM beer_v02 b,
      ) jt
 GROUP BY jt.name;
 
-/* Daten lesen: Wie viel Malz benötige ich für alle Biere?  */
-db.beers.aggregate([
-  {
-    $unwind: "$recipe.malts"
-  },
-  {
-    $group: {
-      _id: "$recipe.malts.name",
-      gesamtMengeKg: {
-        $sum: "$recipe.malts.amountKg"
-      }
-    }
-  },
-  {
-    $sort: {
-      gesamtMengeKg: -1
-    }
-  }
-])
-
 /* Daten lesen: Wie viel Malz benötige ich für alle IPA?  */
-db.beers.aggregate([
-  {
-    $match: {style : 'IPA' }
-  },
-  {
-    $unwind: "$recipe.malts"
-  },
-  {
-    $group: {
-      _id: "$recipe.malts.name",
-      gesamtMengeKg: {
-        $sum: "$recipe.malts.amountKg"
-      }
-    }
-  },
-  {
-    $sort: {
-      gesamtMengeKg: -1
-    }
-  }
-])
+SELECT
+    jt.malz_name, sum(jt.malz_amountKg) gesamtMengeKg
+FROM beer_v02 b,
+     JSON_TABLE(
+         b.data,
+         '$'
+         COLUMNS (
+             name VARCHAR2(100) PATH '$.name',
+             NESTED PATH '$.recipe.malts[*]'
+             COLUMNS (
+                 malz_name VARCHAR2(100) PATH '$.name',
+                 malz_amountKg NUMBER PATH '$.amountKg'
+             )
+         )
+     ) jt
+WHERE b.data.style = 'IPA'
+GROUP BY jt.malz_name
+ORDER BY gesamtMengeKg desc;
 
-db.beers.aggregate([
-  {
-    $match: {style : 'IPA' }
-  },
-  { $project : {_id: 0, name: 1, malts: "$recipe.malts"}}])
-
-db.beers.aggregate([
-  {
-    $match: {style : 'IPA' }
-  },
-  { $project : {_id: 0, name: 1, malts: "$recipe.malts"}},
-  { $unwind: "$malts"}])

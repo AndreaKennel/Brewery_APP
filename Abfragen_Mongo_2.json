@@ -81,26 +81,6 @@ db.beers.aggregate([
   }
 ])
 
-/* Daten lesen: Wie viel Malz benötige ich für alle Biere?  */
-db.beers.aggregate([
-  {
-    $unwind: "$recipe.malts"
-  },
-  {
-    $group: {
-      _id: "$recipe.malts.name",
-      gesamtMengeKg: {
-        $sum: "$recipe.malts.amountKg"
-      }
-    }
-  },
-  {
-    $sort: {
-      gesamtMengeKg: -1
-    }
-  }
-])
-
 /* Daten lesen: Wie viel Malz benötige ich für alle IPA?  */
 db.beers.aggregate([
   {
