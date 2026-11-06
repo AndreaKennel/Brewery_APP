@@ -4,7 +4,7 @@ FROM beer_v02;
 
 /* Daten lesen: welche Biere verweden Cascade als Hopfen */
 SELECT b.data.name, b.data.style, b.data.recipe.hops.name
-FROM beer_v02 b;
+FROM beer_v02 b
 WHERE b.data.recipe.hops.name = 'Cascade';
 
 SELECT b.data.name, b.data.style, b.data.recipe.hops.name
@@ -80,6 +80,8 @@ SELECT
     b.data.name,
     JSON_VALUE(data, '$.recipe.malts.size()') AS anzahl_malze
 FROM beer_v02 b;
+
+/* Daten lesen: Anzahl verschiedene Malzsorten und Hopfen je Bier */
 
 SELECT
     jt.name,

@@ -42,6 +42,7 @@ db.beers.aggregate([
   }
 ])
 
+/* Daten lesen: Anzahl verschiedene Malzsorten und Hopfen je Bier */
 db.beers.aggregate([
   {
     $project: {
